@@ -1,0 +1,41 @@
+services:
+  app:
+    image: "${COMPOSE_PROJECT_NAME}/${PROJECT_NAME}:${PROJECT_VERSION}"
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+      args:
+        USER_NAME: "${USER_NAME}"
+        USER_ID: "${USER_ID}"
+        GROUP_ID: "${GROUP_ID}"
+        SHARED_GROUP_ID: "${SHARED_GROUP_ID}"
+        WORKDIR: "${CONTAINER_WORKDIR}"
+        DATADIR: "${CONTAINER_DATADIR}"
+        HISTFILE: "${CONTAINER_HISTORY_FILE}"
+        PYTHON_VERSION: "${PYTHON_VERSION}"
+        PYTHON_VENV_DIR: ${CONTAINER_PYTHON_VENV_DIR}
+    environment:
+      WORKDIR: "${CONTAINER_WORKDIR}"
+      DATADIR: "${CONTAINER_DATADIR}"
+      DISPLAY: "${DISPLAY}" # Enables GUI support
+    network_mode: host
+    stdin_open: true   # Allows interactive shell access
+    tty: true          # Allocates a pseudo-TTY for shell
+    volumes:
+      - "${HOST_WORKDIR}:${CONTAINER_WORKDIR}"
+      - "${HOST_DATADIR}:${CONTAINER_DATADIR}"
+      - "${HOST_SSHDIR}:/home/${USER_NAME}/.ssh"
+      - "${HOST_HISTORY_FILE}:${CONTAINER_HISTORY_FILE}"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+              count: all
+        # Uncomment to set resource limits
+        # limits:
+        #   memory: 30g
+    ipc: "host"
+
+    entrypoint: /entrypoint.sh

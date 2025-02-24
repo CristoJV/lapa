@@ -1,0 +1,76 @@
+# --------------------------------------------- #
+# Files and directories to exclude from context
+# --------------------------------------------- #
+
+# Local dependencies (virtual environments, locally installed modules)
+venv/
+python_modules/
+.python-version
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# System temporary files
+*.swp
+*.swo
+*.tmp
+*.log
+*.bak
+*.orig
+
+# Build and distribution directories
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+*.whl
+
+# Dependencies directories for other languages (if applicable)
+node_modules/
+bower_components/
+jspm_packages/
+
+# Documentation and report directories
+docs/
+doc/
+coverage/
+*.cover
+*.coverage
+*.coveragerc
+htmlcov/
+
+# Test and example directories
+tests/
+test/
+examples/
+example/
+
+# Local configuration files (unless necessary within the container)
+*.local
+*.env.local
+config/local.yaml
+config/*.local.yaml
+
+# Version control
+# .git is not excluded as it is required for Git operations within the container
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Docker-specific files (if in context)
+Dockerfile*
+docker-compose*.yml
+
+# Other non-essential files and directories
+*.DS_Store
+Thumbs.db
+*.bak
+*.tmp
+*.backup
