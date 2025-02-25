@@ -2,6 +2,6 @@
 
 __version__ = "0.0.0"
 AUTHOR = "CristoJV"
-EMAIL = ""
+EMAIL = "cristojv"
 LICENSE = ""
 URL = ""
