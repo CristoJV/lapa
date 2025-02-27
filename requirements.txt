@@ -1,5 +1,5 @@
 # Core libraries
-numpy~=2.2.3
+numpy~=2.1.1
 pandas~=2.2.3
 tqdm~=4.67.1
 
@@ -10,6 +10,7 @@ albumentations~=2.0.4
 # Machine Learning & Deep Learning
 pytorch-lightning~=2.5.0
 torchmetrics~=1.6.1
+ultralytics~=8.3.78
 
 # Optimization and performance
 onnxruntime-gpu~=1.20.1
